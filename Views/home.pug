@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        title="Doctor"
+        include extendFile.pug
+    body
+        include header.pug        
+        //- include navbar.html
+        br
+        div
+            .container
+                div.card
+                    div.card-body
+                        form
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='staticEmail') Email
+                                .col-sm-10
+                                    input.form-control(type='email' value='email@example.com')
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='inputPassword') Password
+                                .col-sm-10
+                                    input#inputPassword.form-control(type='password' placeholder='Password')
+
+

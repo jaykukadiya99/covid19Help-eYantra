@@ -1,0 +1,80 @@
+doctype html
+html(lang="en")
+    head
+        title="Doctor"
+        include extendFile.pug
+    //- style.
+    //-     footer {
+    //-         position: absolute;
+    //-         bottom: 0;
+    //-         width:100%;
+    //-     }
+    body
+        include header.pug                
+        br
+        div
+            .container.container-fluid
+                div.card
+                    div.card-body
+                        form(action="/doctor", method="post")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtFirstName') First Name 
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    input.form-control(type='text',name='txtFirstName',required='',placeholder="Enter Your Firstname")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtLastName') Last Name
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    input.form-control(type='text',name='txtLastName',required='',placeholder="Enter Your Lastname")
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtEmail') Email
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    input.form-control(type='email',name='txtEmail',required='',placeholder="Enter Your Email")        
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='Gender') Gender
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtGender', value='Male', checked='')
+                                        label.form-check-label
+                                            | Male
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtGender', value='Female')
+                                        label.form-check-label
+                                            | Female
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtGender', value='Other')
+                                        label.form-check-label
+                                            | Other
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtMobile') Mobile No.
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    input.form-control(type='string',name='txtMobile',required='',placeholder="Enter Your 10 Digit Mobile Number",pattern="[6789][0-9]{9}",title="Phone number startwith 6-9 and remaing 9 digit with 0-9")        
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtState') State
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    //- input.form-control(type='text',name='txtState',required='',placeholder="Enter Your State")        
+                                    include stateCmb.pug
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtQualification') Qualification
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    //-input.form-control(type='text',name='txtQualification',required='',placeholder="Enter Your Qualification")        
+                                    include doctorDegreeCmb.pug
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtSpeQualification') Specialization (if any)
+                                .col-sm-10
+                                    input.form-control(type='text',name='txtSpeQualification',placeholder="Enter Your Specialization")        
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtRegNo') Medical Council Registration No
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    input.form-control(type='text',name='txtRegNo',required='',placeholder="Enter Your Registration No")        
+                            button.btn.btn-primary(type='submit') Submit
+        br
+        include footer.pug
+
