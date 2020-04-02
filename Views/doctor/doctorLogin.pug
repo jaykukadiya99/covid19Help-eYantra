@@ -15,11 +15,11 @@ html(lang="en")
             .container
                 div.card
                     .card-header
-                        h1(align="center")="Login"
+                        h1(align="center")="Doctor Login"
                     div.card-body
                         if errMsg
                             h4.text-danger(align="center")=errMsg
-                        form(action="/admin", method="post")
+                        form(action="/doctor/login", method="post")
                             .form-group.row
                                 label.col-sm-2.offset-sm-2.col-form-label(for='txtEmail') Email
                                     font(size='3', color='red') *

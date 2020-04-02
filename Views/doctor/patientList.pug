@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+    head
+        title="Doctor"
+        include extendFile.pug
+        script.
+            $(document).ready( function ()
+                {
+                    $('#example').DataTable({responsive: true});                    
+                }
+            );
+    body
+        include header.pug 
+        br
+        div
+            .container
+                div.card
+                    .card-header
+                        h1(align="center")="Patient List"
+                    div.card-body
+                        table#example.table.table-striped.table-bordered(style='width:100%')
+                                thead
+                                    tr
+                                        th Firstname
+                                        th Gender                                        
+                                        th Disease
+                                        th Disease Details
+                                        th From Last (Days)
+                                        th State
+                                        th Age
+                                tbody
+                                    each val in data
+                                        tr
+                                            td=val.firstName
+                                            td=val.gender
+                                            td=val.disease                           
+                                            td=val.diseaseDetails                    
+                                            td=val.fromDays
+                                            td=val.state
+                                            td=val.age                                               
+        br
+        include ../footer.pug
+                            
+
+

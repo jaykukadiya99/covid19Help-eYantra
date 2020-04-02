@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const doctor = require('./routes/doctor.js');
 const admin = require('./routes/admin.js');
+const patient = require('./routes/patient.js');
 const mongoose = require("mongoose");
 const session = require('express-session');
 
@@ -18,6 +19,7 @@ app.use(session({secret: "Shh, its a secret!",resave: true,saveUninitialized: tr
 
 app.use('/doctor',doctor);
 app.use('/admin',admin);
+app.use('/patient',patient);
 
 app.get('/', (req, res) => {
     res.render("home");

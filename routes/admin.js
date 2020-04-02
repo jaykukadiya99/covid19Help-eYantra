@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const randomstring = require("randomstring");
 require('dotenv').config()
 
-const adminAuth = require("../middleware/adminAuth");
+const adminAuth = require("../middleware/adminAuth.js");
 
 const {Admin} = require("../models/admin.js");
 const {Doctor} = require("../models/doctor.js");
@@ -63,15 +63,14 @@ route.get('/select/:id',adminAuth,async(req,res)=>{
         text: 'Thank You for your registration your user name is your registed Email and password is : ' + randPass
       };
       
-      transporter.sendMail(mailOptions, function(error, info){
+      transporter.sendMail(mailOptions,function(error, info){
         if (error) {
           console.log(error);
         } else {
           console.log('Email sent: ' + info.response);
+          let doctor = Doctor.updateOne({_id:req.params.id},{status:1,pass:randPass});
         }
       });
-
-    let doctor = await Doctor.updateOne({_id:req.params.id},{status:1,pass:randPass});
     res.redirect("/admin/allDoctor");
 });
 
@@ -80,6 +79,9 @@ route.get('/reject/:id',adminAuth,async(req,res)=>{
     res.redirect("/admin/allDoctor");
 });
 
-
+route.get('/logout',(req,res)=>{
+  req.session.destroy();
+  res.redirect('/admin');
+});
 
 module.exports = route

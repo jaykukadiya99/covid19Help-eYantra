@@ -3,16 +3,8 @@ html(lang="en")
     head
         title="Doctor"
         include extendFile.pug
-    //- style.
-    //-     footer {
-    //-         position: absolute;
-    //-         bottom: 0;
-    //-         width:100%;
-    //-     }
     body
-        include header.pug 
-            li.nav-item
-                a.nav-link(href='/doctor/login') Login
+        include header.pug
         br
         div
             .container.container-fluid
@@ -20,7 +12,7 @@ html(lang="en")
                     div.card-body
                         if errMsg
                             h4.text-danger(align="center")=errMsg
-                        form(action="/doctor", method="post")
+                        form(action="/patient", method="post")
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtFirstName') First Name 
                                     font(size='3', color='red') *
@@ -64,20 +56,41 @@ html(lang="en")
                                     //- input.form-control(type='text',name='txtState',required='',placeholder="Enter Your State")        
                                     include stateCmb.pug
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtQualification') Qualification
+                                label.col-sm-2.col-form-label(for='txtAge') Age
                                     font(size='3', color='red') *
                                 .col-sm-4
-                                    //-input.form-control(type='text',name='txtQualification',required='',placeholder="Enter Your Qualification")        
-                                    include doctorDegreeCmb.pug
+                                    input.form-control(type='number',name='txtAge',required='',value=18)        
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtSpeQualification') Specialization (if any)
-                                .col-sm-10
-                                    input.form-control(type='text',name='txtSpeQualification',placeholder="Enter Your Specialization")        
-                            .form-group.row
-                                label.col-sm-2.col-form-label(for='txtRegNo') Medical Council Registration No
+                                label.col-sm-2.col-form-label(for='txtDisease') Disease
                                     font(size='3', color='red') *
                                 .col-sm-10
-                                    input.form-control(type='text',name='txtRegNo',required='',placeholder="Enter Your Registration No")        
+                                    input.form-control(type='text',name='txtDisease',required='',placeholder="Enter Your Disease in short",pattern=".{0,30}",title="Less than 30 character")        
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtDiseaseDetails') Disease Details
+                                .col-sm-10
+                                    textarea.form-control(rows='5', name='txtDiseaseDetails')                                           
+                            .form-group.row
+                                label.col-sm-2.col-form-label(for='txtFromDays') Disease From Last
+                                    font(size='3', color='red') *
+                                .col-sm-10
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtFromDays', value='1', checked='')
+                                        label.form-check-label 1 Day
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtFromDays', value='7')
+                                        label.form-check-label 2-7 Days
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtFromDays', value='15')
+                                        label.form-check-label 8-15 Days
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtFromDays', value='30')
+                                        label.form-check-label 16-30 Days
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtFromDays', value='60')
+                                        label.form-check-label 2 Months
+                                    .form-check
+                                        input.form-check-input(type='radio', name='txtFromDays', value='60+')
+                                        label.form-check-label More than 2 Months
                             button.btn.btn-primary(type='submit') Submit
         br
         include footer.pug
