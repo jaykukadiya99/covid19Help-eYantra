@@ -1,9 +1,11 @@
 header
   nav.navbar.navbar-expand-sm.bg-info.navbar-dark
-    ul.navbar-nav
+    ul.navbar-nav.reveal
       li.nav-item.active
-        a.nav-link(href='/') Covid19Help
-      //- li.nav-item
-      //-   a.nav-link(href='/doctor') Doctor
-      //- li.nav-item
-      //-   a.nav-link(href='/needDoctor') Selected Doctor      
+        a.nav-link(href='/') Covid19Help      
+      li.nav-item
+        a.nav-link(href='/admin/allDoctor') Doctor
+      li.nav-item
+        a.nav-link(href='/admin/selectedDoctor') Selected Doctor     
+      li.nav-item
+        a.nav-link(href='/admin/rejectedDoctor') Rejected Doctor     

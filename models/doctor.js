@@ -35,6 +35,10 @@ const doctorSchema = new mongoose.Schema({
     regNo: {
         type: String,
         required: true
+    },
+    status:{
+        type:Number,
+        default:0
     }
 });
 

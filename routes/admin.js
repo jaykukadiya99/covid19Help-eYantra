@@ -23,9 +23,33 @@ route.post("/",async(req,res)=>{
     res.redirect("/admin/allDoctor");
 });
 
-route.get('/allDoctor',async(req,res)=>{
-    let doctors = await Doctor.find();
-    res.render("./admin/displayDoctor");
+route.get('/allDoctor',adminAuth,async(req,res)=>{
+    let doctors = await Doctor.find({status:0});
+    res.render("./admin/displayDoctor",{title:"Doctor List",data:doctors,link:2});
+
+    //link=2 display select and reject button
+});
+
+route.get('/selectedDoctor',adminAuth,async(req,res)=>{
+    let doctors = await Doctor.find({status:1});
+    res.render("./admin/displayDoctor",{title:"Selected Doctor List",data:doctors,link:1});
+    //link=1 display reject button
+});
+
+route.get('/rejectedDoctor',adminAuth,async(req,res)=>{
+    let doctors = await Doctor.find({status:1});
+    res.render("./admin/displayDoctor",{title:"Rejected Doctor List",data:doctors,link:0});
+    //link=2 display select button
+});
+
+route.get('/select/:id',adminAuth,async(req,res)=>{
+    let doctor = await Doctor.updateOne({_id:req.params.id},{status:1});
+    res.redirect("/admin/allDoctor");
+});
+
+route.get('/reject/:id',adminAuth,async(req,res)=>{
+    let doctor = await Doctor.updateOne({_id:req.params.id},{status:2});
+    res.redirect("/admin/allDoctor");
 });
 
 module.exports = route
