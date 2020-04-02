@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
-const doctor = require('./routes/doctor');
+const doctor = require('./routes/doctor.js');
+const admin = require('./routes/admin.js');
 const mongoose = require("mongoose");
+const session = require('express-session');
 
 mongoose.connect("mongodb://localhost/covid19Help", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => console.log("Connected to database...."))
@@ -12,8 +14,10 @@ app.set('views', './views');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(session({secret: "Shh, its a secret!",resave: true,saveUninitialized: true,cookie: {maxAge:86400}}));
 
 app.use('/doctor',doctor);
+app.use('/admin',admin);
 
 app.get('/', (req, res) => {
     res.render("home");

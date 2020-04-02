@@ -18,14 +18,12 @@ route.post('/',(req,res)=>{
         qualification:req.body.txtQualification,
         speQualification:req.body.txtSpeQualification,
         regNo:req.body.txtRegNo,
-        // firstName:"jk"
     });
     newDoctor.save((err,result)=>{
         if (err) throw err;
         else
             res.redirect('/');
-    });    
-//    res.send(req.body);
+    });
 });
 
 module.exports = route
