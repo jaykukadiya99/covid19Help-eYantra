@@ -39,6 +39,10 @@ const doctorSchema = new mongoose.Schema({
     status:{
         type:Number,
         default:0
+    },
+    pass:{
+        type:String,
+        default:''
     }
 });
 

@@ -1,7 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const route = express.Router();
-const session = require('express-session');
+const nodemailer = require('nodemailer'); 
+const randomstring = require("randomstring");
+require('dotenv').config()
+
 const adminAuth = require("../middleware/adminAuth");
 
 const {Admin} = require("../models/admin.js");
@@ -37,13 +39,39 @@ route.get('/selectedDoctor',adminAuth,async(req,res)=>{
 });
 
 route.get('/rejectedDoctor',adminAuth,async(req,res)=>{
-    let doctors = await Doctor.find({status:1});
+    let doctors = await Doctor.find({status:2});
     res.render("./admin/displayDoctor",{title:"Rejected Doctor List",data:doctors,link:0});
     //link=2 display select button
 });
 
 route.get('/select/:id',adminAuth,async(req,res)=>{
-    let doctor = await Doctor.updateOne({_id:req.params.id},{status:1});
+    let doctorData = await Doctor.findOne({_id:req.params.id});
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.USER,
+          pass: process.env.PASS
+        }
+      });
+      const randPass=randomstring.generate({length: 12});
+
+      var mailOptions = {
+        from: process.env.USER,
+        to: doctorData.email,
+        subject: 'Confirmation From Covid19Help',
+        text: 'Thank You for your registration your user name is your registed Email and password is : ' + randPass
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+
+    let doctor = await Doctor.updateOne({_id:req.params.id},{status:1,pass:randPass});
     res.redirect("/admin/allDoctor");
 });
 
@@ -51,5 +79,7 @@ route.get('/reject/:id',adminAuth,async(req,res)=>{
     let doctor = await Doctor.updateOne({_id:req.params.id},{status:2});
     res.redirect("/admin/allDoctor");
 });
+
+
 
 module.exports = route
