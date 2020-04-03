@@ -44,9 +44,8 @@ html(lang="en")
                     url: "/doctor/reject/"+id,                    
                     type: 'GET',
                     success: function (resp) {
-                        alert(resp);
                         swal({title:"You Reject Patient",icon: "error"});
-                        //- $("#"+id).remove();
+                        $("#"+id).remove();
                     },
                     error: function(e) {
                         alert('Error: '+e);
@@ -65,25 +64,25 @@ html(lang="en")
                         table#example.table.table-striped.table-bordered(style='width:100%')
                                 thead
                                     tr
+                                        th Attend
                                         th Firstname
                                         th Gender                                        
                                         th Disease
                                         th Disease Details
-                                        th From Last (Days)
-                                        th Attend
+                                        th From Last (Days)                                        
                                         th State
                                         th Age
                                 tbody
                                     each val in data
-                                        tr(id=val._id)
+                                        tr(id=val._id)                                            
+                                            td
+                                                //- a(href="/doctor/attend/"+val._id) Attend
+                                                button.btn.btn-primary(type='button',onclick='showPatient(\''+val._id+'\',\''+val.mobile+'\',\''+val.email+'\')') Attend
                                             td=val.firstName
                                             td=val.gender
                                             td=val.disease                           
                                             td=val.diseaseDetails                    
                                             td=val.fromDays
-                                            td
-                                                //- a(href="/doctor/attend/"+val._id) Attend
-                                                button.btn.btn-primary(type='button',onclick='showPatient(\''+val._id+'\',\''+val.mobile+'\',\''+val.email+'\')') Attend
                                             td=val.state
                                             td=val.age                                               
         br

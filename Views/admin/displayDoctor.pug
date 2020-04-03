@@ -22,6 +22,10 @@ html(lang="en")
                         table#example.table.table-striped.table-bordered(style='width:100%')
                             thead
                                 tr
+                                    if link!=1
+                                        th Select
+                                    if link!=0                            
+                                        th Reject
                                     th Firstname
                                     th Lastname
                                     th Gender
@@ -29,28 +33,24 @@ html(lang="en")
                                     th Qualification
                                     th Speciaization
                                     th Registration No
-                                    if link!=1
-                                        th Select
-                                    if link!=0                            
-                                        th Reject
                                     th email
                                     th Mobile
                             tbody
                                 each val in data
                                     tr
-                                        td=val.firstName
-                                        td=val.lastName
-                                        td=val.gender
-                                        td=val.state
-                                        td=val.qualification                           
-                                        td=val.speQualification                           
-                                        td=val.regNo  
                                         if link!=1                                  
                                             td
                                                 a(href="/admin/select/"+val._id) Select 
                                         if link!=0
                                             td
                                                 a.text-danger(href="/admin/reject/"+val._id) Reject 
+                                        td=val.firstName
+                                        td=val.lastName
+                                        td=val.gender
+                                        td=val.state
+                                        td=val.qualification                           
+                                        td=val.speQualification                           
+                                        td=val.regNo                                      
                                         td=val.email 
                                         td=val.mobile                          
 

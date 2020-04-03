@@ -8,6 +8,7 @@ const adminAuth = require("../middleware/adminAuth.js");
 
 const { Admin } = require("../models/admin.js");
 const { Doctor } = require("../models/doctor.js");
+const {Patient} = require("../models/patient.js");
 
 route.get("/", (req, res) => {
   res.render("./admin/adminLogin");
@@ -77,6 +78,15 @@ route.get('/select/:id', adminAuth, async (req, res) => {
 route.get('/reject/:id', adminAuth, async (req, res) => {
   let doctor = await Doctor.updateOne({ _id: req.params.id }, { status: 2 });
   res.redirect("/admin/allDoctor");
+});
+
+
+route.get('/patientList', adminAuth, async (req, res) => {
+  let patient = await Patient.find();
+
+  let pendingCase = await Patient.count({status:0});
+  let completeCase = await Patient.count({status:1});
+  res.render("./admin/patientList", { data: patient,pendingCase:pendingCase,completeCase:completeCase});
 });
 
 route.get('/logout', (req, res) => {

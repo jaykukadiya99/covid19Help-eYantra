@@ -57,8 +57,8 @@ route.post("/login",async(req,res)=>{
     res.redirect("/doctor/patientList");
 });
 
-route.get('/patientList',doctorAuth,async(req,res)=>{
-    let patient = await Patient.find({status:{$ne:1}});
+route.get('/patientList',doctorAuth,async(req,res)=>{    
+    let patient = await Patient.find({status:0,rejectedDoctorId:{$nin:req.session.user._id}});
     res.render("./doctor/patientList",{data:patient});
 });
 

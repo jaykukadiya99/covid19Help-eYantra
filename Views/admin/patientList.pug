@@ -1,0 +1,61 @@
+doctype html
+html(lang="en")
+    head
+        title="Doctor"
+        include extendFile.pug
+        script.
+            $(document).ready( function ()
+                {
+                    $('#example').DataTable({responsive: true});                    
+                }
+            );
+    body
+        include header.pug 
+        br
+        div
+            .container
+                div.card
+                    .card-header
+                        h1(align="center")="Patient List"                    
+                    .row
+                        .col-sm-4.offset-sm-2
+                            .card
+                                .card-header Pending Case
+                                .card-body=pendingCase
+                        .col-sm-4
+                            .card
+                                .card-header Completed Case
+                                .card-body=completeCase
+
+                    div.card-body
+                        table#example.table.table-striped.table-bordered(style='width:100%')
+                                thead
+                                    tr
+                                        th Status
+                                        th Firstname
+                                        th Gender                                        
+                                        th Disease
+                                        th Disease Details
+                                        th From Last (Days)                                        
+                                        th State
+                                        th Age
+                                tbody
+                                    each val in data
+                                        tr(id=val._id)
+                                            td
+                                                if(val.status==0)
+                                                    span.badge.badge-warning Pending
+                                                if(val.status==1)
+                                                    span.badge.badge-success Completed
+                                            td=val.firstName
+                                            td=val.gender
+                                            td=val.disease                           
+                                            td=val.diseaseDetails                    
+                                            td=val.fromDays
+                                            td=val.state
+                                            td=val.age                                               
+        br
+        include ../footer.pug
+                            
+
+
