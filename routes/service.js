@@ -1,14 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const route = express.Router();
-const {Patient} = require("../models/patient.js");
+const {Service} = require("../models/service.js")
 
-route.get('/', (req, res) => {
-    res.render("patient");
+route.get('/',(req,res)=>{
+    res.render("service");
 });
 
 route.post('/',async(req,res)=>{
-    //res.send(req.body);
     const newPatient = new Patient({
         firstName:req.body.txtFirstName,
         lastName:req.body.txtLastName,
@@ -26,11 +24,10 @@ route.post('/',async(req,res)=>{
         if (err)
             req.session.error = 'Somthing goes wrong try again after sometime';
         else
-            req.session.sucess = 'Doctor will contact you soon';
+            req.session.sucess = 'Thank You! for registration';
         
         res.redirect('/');
     });
 });
 
-
-module.exports = route
+module.exports = route;

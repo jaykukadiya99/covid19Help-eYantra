@@ -1,10 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const route = express.Router();
 const {Doctor} = require("../models/doctor.js");
 const {Patient} = require("../models/patient.js");
-const nodemailer = require('nodemailer'); 
-require('dotenv').config()
 
 
 const doctorAuth = require("../middleware/doctorAuth.js");

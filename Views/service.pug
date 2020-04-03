@@ -11,8 +11,9 @@ html(lang="en")
                 if errMsg
                     .alert.alert-danger(role='alert')=errMsg
                 div.card
+                    .card-header.text-center="Service"
                     div.card-body
-                        form(action="/patient", method="post")
+                        form(action="/service", method="post")
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtFirstName') First Name 
                                     font(size='3', color='red') *

@@ -67,6 +67,7 @@ html(lang="en")
                                         th Attend
                                         th Firstname
                                         th Gender                                        
+                                        th Category                                        
                                         th Disease
                                         th Disease Details
                                         th From Last (Days)                                        
@@ -80,6 +81,7 @@ html(lang="en")
                                                 button.btn.btn-primary(type='button',onclick='showPatient(\''+val._id+'\',\''+val.mobile+'\',\''+val.email+'\')') Attend
                                             td=val.firstName
                                             td=val.gender
+                                            td=val.category
                                             td=val.disease                           
                                             td=val.diseaseDetails                    
                                             td=val.fromDays

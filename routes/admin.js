@@ -28,20 +28,22 @@ route.post("/", async (req, res) => {
 
 route.get('/allDoctor', adminAuth, async (req, res) => {
   let doctors = await Doctor.find({ status: 0 });
-  res.render("./admin/displayDoctor", { title: "Doctor List", data: doctors, link: 2 });
-
+  let cnt = doctors.length;
+  res.render("./admin/displayDoctor", { title: "Doctor List", data: doctors, link: 2,count:cnt });
   //link=2 display select and reject button
 });
 
 route.get('/selectedDoctor', adminAuth, async (req, res) => {
   let doctors = await Doctor.find({ status: 1 });
-  res.render("./admin/displayDoctor", { title: "Selected Doctor List", data: doctors, link: 1 });
+  let cnt = doctors.length;
+  res.render("./admin/displayDoctor", { title: "Selected Doctor List", data: doctors, link: 1,count:cnt });
   //link=1 display reject button
 });
 
 route.get('/rejectedDoctor', adminAuth, async (req, res) => {
   let doctors = await Doctor.find({ status: 2 });
-  res.render("./admin/displayDoctor", { title: "Rejected Doctor List", data: doctors, link: 0 });
+  let cnt = doctors.length;
+  res.render("./admin/displayDoctor", { title: "Rejected Doctor List", data: doctors, link: 0 ,count:cnt});
   //link=2 display select button
 });
 
@@ -86,7 +88,10 @@ route.get('/patientList', adminAuth, async (req, res) => {
 
   let pendingCase = await Patient.count({status:0});
   let completeCase = await Patient.count({status:1});
-  res.render("./admin/patientList", { data: patient,pendingCase:pendingCase,completeCase:completeCase});
+  let cnt = patient.length;
+
+  res.render("./admin/patientList", { data: patient,total:cnt
+    ,pendingCase:pendingCase,completeCase:completeCase});
 });
 
 route.get('/logout', (req, res) => {

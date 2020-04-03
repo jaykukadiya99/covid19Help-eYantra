@@ -14,26 +14,21 @@ html(lang="en")
         br
         div
             .container
-                div.card
+                div.card.text-center.my-5
                     .card-header
-                        h1(align="center")="Patient List"                    
-                    .row
-                        .col-sm-4.offset-sm-2
-                            .card
-                                .card-header Pending Case
-                                .card-body=pendingCase
-                        .col-sm-4
-                            .card
-                                .card-header Completed Case
-                                .card-body=completeCase
-
+                       h1(align="center")="Patient List"
+                       .row
+                            .col-sm-4.text-danger="Total : "+ total             
+                            .col-sm-4.text-warning="PendingCase : "+ pendingCase                    
+                            .col-sm-4.text-success="CompletedCase : "+ completeCase                     
                     div.card-body
                         table#example.table.table-striped.table-bordered(style='width:100%')
                                 thead
                                     tr
                                         th Status
                                         th Firstname
-                                        th Gender                                        
+                                        th Gender 
+                                        th Category                                       
                                         th Disease
                                         th Disease Details
                                         th From Last (Days)                                        
@@ -49,6 +44,7 @@ html(lang="en")
                                                     span.badge.badge-success Completed
                                             td=val.firstName
                                             td=val.gender
+                                            td=val.category
                                             td=val.disease                           
                                             td=val.diseaseDetails                    
                                             td=val.fromDays
