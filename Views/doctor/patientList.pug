@@ -9,6 +9,50 @@ html(lang="en")
                     $('#example').DataTable({responsive: true});                    
                 }
             );
+            function showPatient(id,mobile,email)
+            {
+                //- alert(id+","+mobile+","+email);
+                swal({
+                    title: "Patient Details",
+                    text: "Mobile :"+ mobile +"\n Email : "+ email +"",
+                    buttons: true,
+                    })
+                    .then((willDelete) => {
+                    if (willDelete) {                        
+                        attendSuccess(id);
+                    } else {
+                        reject(id);
+                        //- swal("You Cancle!", {icon: "error",});
+                    }
+                    });
+            }
+            function attendSuccess(id){
+                $.ajax({
+                    url: "/doctor/attend/"+id,                    
+                    type: 'GET',
+                    success: function (resp) {
+                        swal({title:"Done",icon: "success"});
+                        $("#"+id).remove();
+                    },
+                    error: function(e) {
+                        alert('Error: '+e);
+                    }  
+                });
+            }
+            function reject(id){
+                $.ajax({
+                    url: "/doctor/reject/"+id,                    
+                    type: 'GET',
+                    success: function (resp) {
+                        alert(resp);
+                        swal({title:"You Reject Patient",icon: "error"});
+                        //- $("#"+id).remove();
+                    },
+                    error: function(e) {
+                        alert('Error: '+e);
+                    }  
+                });
+            }
     body
         include header.pug 
         br
@@ -26,16 +70,20 @@ html(lang="en")
                                         th Disease
                                         th Disease Details
                                         th From Last (Days)
+                                        th Attend
                                         th State
                                         th Age
                                 tbody
                                     each val in data
-                                        tr
+                                        tr(id=val._id)
                                             td=val.firstName
                                             td=val.gender
                                             td=val.disease                           
                                             td=val.diseaseDetails                    
                                             td=val.fromDays
+                                            td
+                                                //- a(href="/doctor/attend/"+val._id) Attend
+                                                button.btn.btn-primary(type='button',onclick='showPatient(\''+val._id+'\',\''+val.mobile+'\',\''+val.email+'\')') Attend
                                             td=val.state
                                             td=val.age                                               
         br

@@ -41,9 +41,17 @@ const patientSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    doctorId:{
+        type:String,
+    },
+    rejectedDoctorId:{
+        type:[String],
+    },
     status:{
         type:Number,
         default:0
+        //0 - new
+        //1 - completed
     },
 });
 

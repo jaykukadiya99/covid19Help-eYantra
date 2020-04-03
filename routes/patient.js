@@ -22,9 +22,12 @@ route.post('/',async(req,res)=>{
         fromDays:req.body.txtFromDays
     });
     newPatient.save((err,result)=>{
-        if (err) throw err;
+        if (err)
+            req.session.error = 'Somthing goes wrong try again after sometime';
         else
-            res.redirect('/');
+            req.session.sucess = 'Doctor will contact you soon';
+        
+        res.redirect('/');
     });
 });
 

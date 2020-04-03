@@ -13,12 +13,12 @@ html(lang="en")
         br
         div
             .container
+                if errMsg
+                    .alert.alert-danger.text-center(role='alert')=errMsg
                 div.card
                     .card-header
                         h1(align="center")="Login"
-                    div.card-body
-                        if errMsg
-                            h4.text-danger(align="center")=errMsg
+                    div.card-body                        
                         form(action="/admin", method="post")
                             .form-group.row
                                 label.col-sm-2.offset-sm-2.col-form-label(for='txtEmail') Email

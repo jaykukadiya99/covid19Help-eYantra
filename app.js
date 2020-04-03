@@ -22,7 +22,9 @@ app.use('/admin',admin);
 app.use('/patient',patient);
 
 app.get('/', (req, res) => {
-    res.render("home");
+    res.render("home",{err:req.session.error,succ:req.session.sucess});
+    req.session.error="";
+    req.session.sucess="";
 });
 
 app.listen(5000, () => console.log("app running on port 5000"));

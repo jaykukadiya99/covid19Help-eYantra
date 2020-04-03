@@ -8,10 +8,10 @@ html(lang="en")
         br
         div
             .container.container-fluid
+                if errMsg
+                    .alert.alert-danger(role='alert')=errMsg
                 div.card
                     div.card-body
-                        if errMsg
-                            h4.text-danger(align="center")=errMsg
                         form(action="/patient", method="post")
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtFirstName') First Name 
@@ -68,7 +68,7 @@ html(lang="en")
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtDiseaseDetails') Disease Details
                                 .col-sm-10
-                                    textarea.form-control(rows='5', name='txtDiseaseDetails')                                           
+                                    textarea.form-control(name='txtDiseaseDetails',placeholder="Details about your Disease")                                           
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtFromDays') Disease From Last
                                     font(size='3', color='red') *

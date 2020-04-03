@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const route = express.Router();
 const {Doctor} = require("../models/doctor.js");
 const {Patient} = require("../models/patient.js");
+const nodemailer = require('nodemailer'); 
+require('dotenv').config()
+
 
 const doctorAuth = require("../middleware/doctorAuth.js");
 
@@ -25,9 +28,12 @@ route.post('/',async(req,res)=>{
         regNo:req.body.txtRegNo,
     });
     newDoctor.save((err,result)=>{
-        if (err) throw err;
+        if (err)
+            req.session.error = 'Somthing goes wrong try again after sometime';
         else
-            res.redirect('/');
+            req.session.sucess = 'Thank you For Your Registration';
+        
+        res.redirect('/');
     });
 });
 
@@ -52,8 +58,19 @@ route.post("/login",async(req,res)=>{
 });
 
 route.get('/patientList',doctorAuth,async(req,res)=>{
-    let patient = await Patient.find({status:0});
+    let patient = await Patient.find({status:{$ne:1}});
     res.render("./doctor/patientList",{data:patient});
+});
+
+route.get('/attend/:id',doctorAuth,async(req,res)=>{
+    let patient = await Patient.updateOne({ _id: req.params.id }, { status: 1,doctorId:req.session.user._id});
+    res.send({msg:"ok"});
+});
+
+route.get('/reject/:id',doctorAuth,async(req,res)=>{
+    let patient = await Patient.updateOne({ _id: req.params.id }, 
+        { $push: { rejectedDoctorId: req.session.user._id }});
+    res.send(patient);
 });
 
 route.get('/logout',(req,res)=>{

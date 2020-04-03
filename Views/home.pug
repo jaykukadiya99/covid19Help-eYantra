@@ -9,9 +9,11 @@ html(lang="en")
         br
         div
             .container
-                div.card
-                    if msg
-                        .alert.alert-success(role='alert')=msg
+                if succ
+                    .alert.alert-success(role='alert')=succ
+                if err
+                    .alert.alert-danger(role='alert')=err
+                div.card                    
                     .card-header="Welcome..."
                     div.card-body
 
