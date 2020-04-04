@@ -9,8 +9,7 @@ html(lang="en")
                 }
             );
     body
-        include header.pug        
-        //- include navbar.html
+        include header.pug
         br
         div
             .container
@@ -26,36 +25,33 @@ html(lang="en")
                                         th Select
                                     if link!=0                            
                                         th Reject
-                                    th Firstname
-                                    th Lastname
-                                    th Gender
-                                    th State
-                                    th Qualification
-                                    th Speciaization
-                                    th Registration No
-                                    th email
+                                    th Name of Organigation
+                                    th Contact Person Name
+                                    th Category
+                                    th Service
+                                    th Area Of Service
                                     th Mobile
+                                    th State
+                                    th City
+                                    th Service Details
                             tbody
                                 each val in data
                                     tr
                                         if link!=1                                  
                                             td
-                                                a.btn.btn-primary(href="/admin/select/"+val._id) Select 
+                                                a.btn.btn-primary(href="/admin/selectService/"+val._id) Select 
                                         if link!=0
                                             td
-                                                a.btn.btn-danger(href="/admin/reject/"+val._id) Reject 
-                                        td=val.firstName
-                                        td=val.lastName
-                                        td=val.gender
+                                                a.btn.btn-danger(href="/admin/rejectService/"+val._id) Reject 
+                                        td=val.nameOfOrg
+                                        td=val.contactPersonName
+                                        td=val.category                           
+                                        td=val.service                           
+                                        td=val.areaOfService                         
+                                        td=val.mobile
                                         td=val.state
-                                        td=val.qualification                           
-                                        td=val.speQualification                           
-                                        td=val.regNo                                      
-                                        td=val.email 
-                                        td=val.mobile                          
+                                        td=val.city
+                                        td=val.serviceDetails                                                     
 
         br
         include ../footer.pug
-
-
-
