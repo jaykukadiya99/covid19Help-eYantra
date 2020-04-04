@@ -7,22 +7,21 @@ route.get('/',(req,res)=>{
 });
 
 route.post('/',async(req,res)=>{
-    const newPatient = new Patient({
-        firstName:req.body.txtFirstName,
-        lastName:req.body.txtLastName,
-        email:req.body.txtEmail,
-        gender:req.body.txtGender,
+    const newService = new Service({
+        nameOfOrg:req.body.txtNameOfOrg,
+        contactPersonName:req.body.txtContactPersonName,        
         mobile:req.body.txtMobile,
         state:req.body.txtState,
-        age:req.body.txtAge,
+        city:req.body.txtCity,
         category:req.body.txtCategory,
-        disease:req.body.txtDisease,
-        diseaseDetails:req.body.txtDiseaseDetails,
-        fromDays:req.body.txtFromDays
+        service:req.body.txtService,
+        serviceDetails:req.body.txtServiceDetails,
+        areaOfService:req.body.txtAreaOfService
     });
-    newPatient.save((err,result)=>{
-        if (err)
-            req.session.error = 'Somthing goes wrong try again after sometime';
+    newService.save((err,result)=>{
+        if (err){
+            console.log(err);
+            req.session.error = 'Somthing goes wrong try again after sometime';}
         else
             req.session.sucess = 'Thank You! for registration';
         

@@ -1,7 +1,6 @@
 doctype html
 html(lang="en")
     head
-        title="Doctor"
         include extendFile.pug
     body
         include header.pug
@@ -15,36 +14,15 @@ html(lang="en")
                     div.card-body
                         form(action="/service", method="post")
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtFirstName') First Name 
+                                label.col-sm-2.col-form-label(for='txtNameOfOrg') Name Of Organization 
                                     font(size='3', color='red') *
                                 .col-sm-10
-                                    input.form-control(type='text',name='txtFirstName',required='',placeholder="Enter Your Firstname")
+                                    input.form-control(type='text',name='txtNameOfOrg',required='',placeholder="Enter Organization Name")
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtLastName') Last Name
+                                label.col-sm-2.col-form-label(for='txtContactPersonName') Contact Person Name
                                     font(size='3', color='red') *
                                 .col-sm-10
-                                    input.form-control(type='text',name='txtLastName',required='',placeholder="Enter Your Lastname")
-                            .form-group.row
-                                label.col-sm-2.col-form-label(for='txtEmail') Email
-                                    font(size='3', color='red') *
-                                .col-sm-10
-                                    input.form-control(type='email',name='txtEmail',required='',placeholder="Enter Your Email")        
-                            .form-group.row
-                                label.col-sm-2.col-form-label(for='Gender') Gender
-                                    font(size='3', color='red') *
-                                .col-sm-10
-                                    .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Male', checked='')
-                                        label.form-check-label
-                                            | Male
-                                    .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Female')
-                                        label.form-check-label
-                                            | Female
-                                    .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Other')
-                                        label.form-check-label
-                                            | Other
+                                    input.form-control(type='text',name='txtContactPersonName',required='',placeholder="Enter Contact Person Name")
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtMobile') Mobile No.
                                     font(size='3', color='red') *
@@ -57,47 +35,44 @@ html(lang="en")
                                     //- input.form-control(type='text',name='txtState',required='',placeholder="Enter Your State")        
                                     include stateCmb.pug
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtAge') Age
+                                label.col-sm-2.col-form-label(for='txtCity') City
                                     font(size='3', color='red') *
                                 .col-sm-4
-                                    input.form-control(type='number',name='txtAge',required='',value=18)
+                                    input.form-control(type='text',name='txtCity',required='',placeholder="Enter Your city name")
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtCategory') Category
                                     font(size='3', color='red') *
                                 .col-sm-4
                                     //- input.form-control(type='text',name='txtState',required='',placeholder="Enter Your State")        
-                                    include categoryDiseaseCmb.pug      
+                                    include serviceCategoryCmb.pug      
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtDisease') Disease
+                                label.col-sm-2.col-form-label(for='txtService') Service Provided
                                     font(size='3', color='red') *
                                 .col-sm-10
-                                    input.form-control(type='text',name='txtDisease',required='',placeholder="Enter Your Disease in short",pattern=".{0,30}",title="Less than 30 character")        
+                                    input.form-control(type='text',name='txtService',required='',placeholder="Describe Your Service",pattern=".{0,30}",title="Less than 30 character")        
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtDiseaseDetails') Disease Details
+                                label.col-sm-2.col-form-label(for='txtServiceDetails') Service Details
                                 .col-sm-10
-                                    textarea.form-control(name='txtDiseaseDetails',placeholder="Details about your Disease")                                           
+                                    textarea.form-control(name='txtServiceDetails',placeholder="Describe Your Service in details")                                           
                             .form-group.row
-                                label.col-sm-2.col-form-label(for='txtFromDays') Disease From Last
+                                label.col-sm-2.col-form-label(for='txtAreaOfService') Area of Service(within you can provide)
                                     font(size='3', color='red') *
                                 .col-sm-10
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='1', checked='')
-                                        label.form-check-label 1 Day
+                                        input.form-check-input(type='radio', name='txtAreaOfService', value='Our Locality', checked='')
+                                        label.form-check-label Our Locality
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='7')
-                                        label.form-check-label 2-7 Days
+                                        input.form-check-input(type='radio', name='txtAreaOfService', value='City')
+                                        label.form-check-label City
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='15')
-                                        label.form-check-label 8-15 Days
+                                        input.form-check-input(type='radio', name='txtAreaOfService', value='Arround the City')
+                                        label.form-check-label Arround the City
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='30')
-                                        label.form-check-label 16-30 Days
+                                        input.form-check-input(type='radio', name='txtAreaOfService', value='State')
+                                        label.form-check-label State
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='60')
-                                        label.form-check-label 2 Months
-                                    .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='60+')
-                                        label.form-check-label More than 2 Months
+                                        input.form-check-input(type='radio', name='txtAreaOfService', value='Country')
+                                        label.form-check-label Country
                             button.btn.btn-primary(type='submit') Submit
         br
         include footer.pug

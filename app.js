@@ -24,9 +24,11 @@ app.use('/patient',patient);
 app.use('/service',service);
 
 app.get('/', (req, res) => {
-    res.render("home",{err:req.session.error,succ:req.session.sucess});
+    const err = req.session.error;
+    const succ = req.session.sucess;
     req.session.error="";
     req.session.sucess="";
+    res.render("home",{err:err,succ:succ});
 });
 
 app.listen(5000, () => console.log("app running on port 5000"));

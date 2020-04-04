@@ -1,19 +1,11 @@
 const mongoose = require("mongoose");
 
-const serviceSchema = new mongoose.Schema({
-    firstName: {
+const serviceSchema = new mongoose.Schema({    
+    nameOfOrg: {
         type: String,
         required: true
     },
-    lastName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    gender: {
+    contactPersonName: {
         type: String,
         required: true
     },
@@ -25,37 +17,31 @@ const serviceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    age:{
-        type:Number
+    city:{
+        type:String,
+        required:true
     },
     category:{
         type:String,
         required:true
     },
-    disease : {
+    service : {
         type: String,
         required: true,
         maxlength:30
     },
-    diseaseDetails: {
+    serviceDetails: {
         type: String,
     },
-    //new disease or long-time disease
-    fromDays:{
+    areaOfService:{
         type:String,
         required:true
-    },
-    doctorId:{
-        type:String,
-    },
-    rejectedDoctorId:{
-        type:[String],
     },
     status:{
         type:Number,
         default:0
         //0 - new
-        //1 - completed
+        //1 - selected
     },
 });
 
