@@ -1,0 +1,70 @@
+doctype html
+html(lang="en")
+    head
+        include extendFile.pug
+        script.
+            $(document).ready( function ()
+                {
+                    $('#example').DataTable({responsive: true});                    
+                }
+            );
+            function getDetails(id){
+                swal("Write something here:", {
+                content: "input",
+                })
+                .then((value) => {
+                    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;                    
+                    if(regex.test(value))
+                        sendMail(id,value);
+                    else
+                        swal({title:"Enter Valid Email",icon:"error"});
+                    });
+            }
+            function sendMail(id,value){
+                $.ajax({
+                    url: "/service/sendMail/"+id+"/"+value,                   
+                    type: 'get',
+                    success: function (resp) {
+                        //- alert(resp);
+                        swal({title:"Done",text:"check your Email for details",icon: "success"});
+                    },
+                    error: function(e) {
+                        swal({title:"Sorry!!",text:"Try after some time",icon: "error"});
+                    }  
+                });
+            }
+    body
+        include header.pug
+        br
+        div
+            .container
+                div.card
+                    .card-header
+                        h1(align="center")=title
+                        h4(align="center")="Total : "+count
+                    div.card-body
+                        table#example.table.table-striped.table-bordered(style='width:100%')
+                            thead
+                                tr
+                                    th Get Details
+                                    th Name of Organigation
+                                    th Category
+                                    th Service
+                                    th Area Of Service
+                                    th State
+                                    th City
+                                    th Service Details
+                            tbody
+                                each val in data
+                                    tr    
+                                        td
+                                            button.btn.btn-primary(type='button',onclick='getDetails(\''+val._id+'\')') Contact
+                                        td=val.nameOfOrg
+                                        td=val.category                           
+                                        td=val.service                           
+                                        td=val.areaOfService
+                                        td=val.state
+                                        td=val.city
+                                        td=val.serviceDetails
+        br
+        include ./footer.pug

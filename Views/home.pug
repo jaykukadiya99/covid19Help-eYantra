@@ -13,6 +13,53 @@ html(lang="en")
                 if err
                     .alert.alert-danger(role='alert')=err
                 div.card                    
-                    .card-header="Welcome..."
+                    .card-header.h2="Welcome in Covid19Help"
                     div.card-body
+                        p.lead.text-justify &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nowadays the number of corona patients increased rapidly. In this situation, the health of a citizen is the most important. In the fight against COVID-19 India need a team of doctors and contributor who are ready to help the citizen.
+                        p.lead.text-justify &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On this platform doctors and service providers register with required details. Our team verifies them and allow to help those who need help.
+                        p.lead.text-justify &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Those citizens who need medical help fill details about him/her. Verify doctors check patient's details and contact them as soon as early possible.
+                        p.lead.text-justify &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Those citizen looking for any service like groceries, vegetables, etc. they can find details of the appropriate service provider and take benefits of them's service.
+                        br
+                        #doctor
+                            p.h3="Instructions for Doctors"
+                                p.lead.text-justify="This platform is completely for help. Please don't expect any financial benefit form patients and from any other. Your details we keep safe. Don't misuse of any details you get from this platform."
+                                p.h5="How to help as a Doctor?"
+                                    ol.lead
+                                        li Fill the details 
+                                            a(href="/doctor") Here.
+                                        li If your details verify then you get login details in Email.
+                                        li Login as a Doctor 
+                                            a(href="/doctor/login") Here.
+                                        li Find the Patient as per details.
+                                        li Contact digitally to the patient.
+                                    p.lead Note: We will use your details to check valid entry.
+                        #patient
+                            p.h3="Instructions for Patient"
+                                p.h5="How to contact with a Doctor?"
+                                    ol.lead
+                                        li Fill appropriate details of your disease 
+                                            a(href="/patient") Here.
+                                        li As per your details, doctors will contact you.
 
+                        #ServiceProvider
+                            p.h3="Instructions for the Service Provider"
+                                p.lead.text-justify="This platform is completely for help. Please don't expect any financial benefit from anyone. Your details we keep safe. Don't misuse of any details you get from this platform."
+                                p.h5="How to register as a Service Provider?"
+                                    ol.lead
+                                        li Fill the details about your service 
+                                            a(href="/service") Here.
+                                        li After verifying your details it will show 
+                                            a(href="/service/getAll") Here.
+                                        li Anyone who needs your service we will send contact details.
+                                        li They will contact you.
+                        #findService
+                            p.h3=" Instructions for who looking for service"
+                                p.h5="How to find Service Provider"
+                                    ol.lead
+                                        li Find Service provider from 
+                                            a(href="/service/getAll") Here.
+                                        li Get contact details.
+                                        li Contact them and ask for help.
+
+        br
+        include footer.pug

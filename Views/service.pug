@@ -10,7 +10,7 @@ html(lang="en")
                 if errMsg
                     .alert.alert-danger(role='alert')=errMsg
                 div.card
-                    .card-header.text-center="Service"
+                    .card-header.h2.text-center="Service"
                     div.card-body
                         form(action="/service", method="post")
                             .form-group.row
@@ -59,20 +59,32 @@ html(lang="en")
                                     font(size='3', color='red') *
                                 .col-sm-10
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtAreaOfService', value='Our Locality', checked='')
-                                        label.form-check-label Our Locality
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtAreaOfService', value='Our Locality', checked='')
+                                            | Our Locality
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtAreaOfService', value='City')
-                                        label.form-check-label City
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtAreaOfService', value='City')
+                                            | City
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtAreaOfService', value='Arround the City')
-                                        label.form-check-label Arround the City
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtAreaOfService', value='Arround the City')
+                                            | Arround the City
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtAreaOfService', value='State')
-                                        label.form-check-label State
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtAreaOfService', value='State')
+                                            | State
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtAreaOfService', value='Country')
-                                        label.form-check-label Country
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtAreaOfService', value='Country')
+                                            | Country
+                            .form-group.row
+                                .col-sm-10
+                                    .form-check
+                                        label.form-check-label
+                                            input.form-check-input(type='checkbox', name='txtGender', value='txtTC', required='')
+                                            | I am agree to share details. I read instration from 
+                                            a(href="/#ServiceProvider") Here.
                             button.btn.btn-primary(type='submit') Submit
         br
         include footer.pug

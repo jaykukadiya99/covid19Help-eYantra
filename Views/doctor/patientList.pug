@@ -14,15 +14,42 @@ html(lang="en")
                 swal({
                     title: "Patient Details",
                     text: "Mobile :"+ mobile +"\n Email : "+ email +"",
-                    buttons: true,
+                    buttons: {
+                        Cancel: {
+                            text: "Reject",
+                            value: "cancel",
+                            className: "btn-danger",
+                        },
+                        Pending: {
+                            text: "Pending",
+                            value: "pending",
+                            className: "btn-warning",
+                        },
+                        Attend: {
+                            text: "Attend",
+                            value: "attend",
+                            className: "btn-success",
+                        },                        
+                    },
+                    closeOnClickOutside: false,
                     })
-                    .then((willDelete) => {
-                    if (willDelete) {                        
-                        attendSuccess(id);
-                    } else {
-                        reject(id);
-                        //- swal("You Cancle!", {icon: "error",});
-                    }
+                    .then((value) => {
+                          switch (value) {                       
+                            case "cancel":
+                            reject(id);
+                            break;
+                        
+                            case "attend":
+                            attendSuccess(id);
+                            break;
+                            
+                            case "pending":
+                            swal({title:"Appointment Pending",icon: "warning"});
+                            break;
+
+                            default:
+                            swal({title:"Appointment is in Pending",icon: "info"});
+                        }
                     });
             }
             function attendSuccess(id){

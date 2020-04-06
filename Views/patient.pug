@@ -10,6 +10,7 @@ html(lang="en")
                 if errMsg
                     .alert.alert-danger(role='alert')=errMsg
                 div.card
+                    .card-header.h2.text-center="Patient"
                     div.card-body
                         form(action="/patient", method="post")
                             .form-group.row
@@ -32,16 +33,16 @@ html(lang="en")
                                     font(size='3', color='red') *
                                 .col-sm-10
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Male', checked='')
                                         label.form-check-label
+                                            input.form-check-input(type='radio', name='txtGender', value='Male', checked='')
                                             | Male
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Female')
                                         label.form-check-label
+                                            input.form-check-input(type='radio', name='txtGender', value='Female')
                                             | Female
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Other')
                                         label.form-check-label
+                                            input.form-check-input(type='radio', name='txtGender', value='Other')
                                             | Other
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtMobile') Mobile No.
@@ -79,23 +80,36 @@ html(lang="en")
                                     font(size='3', color='red') *
                                 .col-sm-10
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='1', checked='')
-                                        label.form-check-label 1 Day
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtFromDays', value='1', checked='')
+                                            | 1 Day
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='7')
-                                        label.form-check-label 2-7 Days
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtFromDays', value='7')
+                                            | 2-7 Days
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='15')
-                                        label.form-check-label 8-15 Days
+                                        label.form-check-label 
+                                            input.form-check-input(type='radio', name='txtFromDays', value='15')
+                                            | 8-15 Days
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='30')
-                                        label.form-check-label 16-30 Days
+                                        label.form-check-label 
+                                            input.form-check-input(type='radio', name='txtFromDays', value='30')
+                                            | 16-30 Days
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='60')
-                                        label.form-check-label 2 Months
+                                        label.form-check-label 
+                                            input.form-check-input(type='radio', name='txtFromDays', value='60')
+                                            |2 Months
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtFromDays', value='60+')
-                                        label.form-check-label More than 2 Months
+                                        label.form-check-label
+                                            input.form-check-input(type='radio', name='txtFromDays', value='60+')
+                                            | More than 2 Months
+                            .form-group.row
+                                .col-sm-10
+                                    .form-check
+                                        label.form-check-label
+                                            input.form-check-input(type='checkbox', name='txtGender', value='txtTC', required='')
+                                            | I am agree to share my details. I read instration from 
+                                            a(href="/#patient") Here.
                             button.btn.btn-primary(type='submit') Submit
         br
         include footer.pug

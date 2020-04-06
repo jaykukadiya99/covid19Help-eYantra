@@ -18,6 +18,7 @@ html(lang="en")
                 if errMsg
                     .alert.alert-danger(role='alert')=errMsg
                 div.card
+                    .card-header.h2.text-center="Doctor"
                     div.card-body
                         form(action="/doctor", method="post")
                             .form-group.row
@@ -40,16 +41,16 @@ html(lang="en")
                                     font(size='3', color='red') *
                                 .col-sm-10
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Male', checked='')
                                         label.form-check-label
+                                            input.form-check-input(type='radio', name='txtGender', value='Male', checked='')
                                             | Male
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Female')
                                         label.form-check-label
+                                            input.form-check-input(type='radio', name='txtGender', value='Female')
                                             | Female
                                     .form-check
-                                        input.form-check-input(type='radio', name='txtGender', value='Other')
                                         label.form-check-label
+                                            input.form-check-input(type='radio', name='txtGender', value='Other')
                                             | Other
                             .form-group.row
                                 label.col-sm-2.col-form-label(for='txtMobile') Mobile No.
@@ -77,6 +78,13 @@ html(lang="en")
                                     font(size='3', color='red') *
                                 .col-sm-10
                                     input.form-control(type='text',name='txtRegNo',required='',placeholder="Enter Your Registration No")        
+                            .form-group.row
+                                .col-sm-10
+                                    .form-check
+                                        label.form-check-label
+                                            input.form-check-input(type='checkbox', name='txtGender', value='txtTC', required='')
+                                            | I am agree to share my details. I read instration from 
+                                            a(href="/#doctor") Here.
                             button.btn.btn-primary(type='submit') Submit
         br
         include footer.pug
