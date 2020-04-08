@@ -13,8 +13,11 @@
   <li>NodeJS</li>
   <li>ExpressJS</li>
   <li>MongoDB (Database)</li>
-  <li>PugJs (Template engine)</li>
+  <li>PugJS (Template engine)</li>
   </ul>
+<b>Note : </b> 
+<p>1.  After installation of nodejs and mongodb run "npm install" command in project root folder. It's add all other dependency automatically.</p>
+<p>2.  Enter your EmailID and password in ".env" file.</p>
   
   <h2>Process Flow</h2>
   <img src="resource/Process.png" width="750">
@@ -29,7 +32,7 @@
   
   <h4>How to contact with a Doctor?</h4>
   <ol>
-    <li>Fill appropriate details of your disease</li>
+    <li>Fill appropriate details of your disease</li> 
     <li>As per your details, doctors will contact you.</li>
   </ol>
   
