@@ -43,7 +43,7 @@ route.post("/login",async(req,res)=>{
     if(req.session.userType=="doctor")
         return res.redirect("/doctor/patientList");
 
-    let doctor = await Doctor.findOne({email:req.body.txtEmail});
+    let doctor = await Doctor.findOne({email:req.body.txtEmail,status:1});
     if(!doctor) return res.render("./doctor/doctorLogin",{errMsg:"Invalid User"});
 
     if(doctor.pass!=req.body.txtPass) return res.render("./doctor/doctorLogin",{errMsg:"Invalid Password"});

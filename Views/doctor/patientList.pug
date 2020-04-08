@@ -15,18 +15,18 @@ html(lang="en")
                     title: "Patient Details",
                     text: "Mobile :"+ mobile +"\n Email : "+ email +"",
                     buttons: {
-                        Cancel: {
-                            text: "Reject",
-                            value: "cancel",
-                            className: "btn-danger",
-                        },
+                        //- Cancel: {
+                        //-     text: "Reject",
+                        //-     value: "cancel",
+                        //-     className: "btn-danger",
+                        //- },
                         Pending: {
                             text: "Pending",
                             value: "pending",
                             className: "btn-warning",
                         },
                         Attend: {
-                            text: "Attend",
+                            text: "Completed",
                             value: "attend",
                             className: "btn-success",
                         },                        
@@ -91,6 +91,7 @@ html(lang="en")
                                 thead
                                     tr
                                         th Attend
+                                        th Delete
                                         th Firstname
                                         th Gender                                        
                                         th Category                                        
@@ -105,6 +106,9 @@ html(lang="en")
                                             td
                                                 //- a(href="/doctor/attend/"+val._id) Attend
                                                 button.btn.btn-primary(type='button',onclick='showPatient(\''+val._id+'\',\''+val.mobile+'\',\''+val.email+'\')') Attend
+                                            td
+                                                //- a(href="/doctor/attend/"+val._id) Attend
+                                                button.btn.btn-danger(type='button',onclick='reject(\''+val._id+'\')') Delete
                                             td=val.firstName
                                             td=val.gender
                                             td=val.category
