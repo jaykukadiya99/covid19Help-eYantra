@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "5f75a488d5df42136868cb34"
+  },
+  "status": 1,
+  "nameOfOrg": "food",
+  "contactPersonName": "jk",
+  "mobile": "9824855081",
+  "state": "Andhra Pradesh",
+  "city": "surat",
+  "category": "Free Food",
+  "service": "dassdadad",
+  "serviceDetails": "sdasdad                                          ",
+  "areaOfService": "Country",
+  "__v": 0
+}]

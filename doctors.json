@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "5f759c558a490f00d8df1954"
+  },
+  "status": 1,
+  "pass": "1234",
+  "firstName": "j",
+  "lastName": "k",
+  "email": "jaykukadiya94@gmail.com",
+  "gender": "Male",
+  "mobile": "9824855081",
+  "state": "Gujarat",
+  "qualification": "MBBS",
+  "speQualification": "",
+  "regNo": "123456",
+  "__v": 0
+}]

@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "5f75a039e8b1a11d0c6fe1d8"
+  },
+  "rejectedDoctorId": [],
+  "status": 1,
+  "firstName": "jk",
+  "lastName": "jk",
+  "email": "jaykukadiya@gmail.com",
+  "gender": "Male",
+  "mobile": "9874561230",
+  "state": "Gujarat",
+  "age": 18,
+  "category": "Daily Checkup",
+  "disease": "asd",
+  "diseaseDetails": "dsad",
+  "fromDays": "7",
+  "__v": 0,
+  "doctorId": "5f759c558a490f00d8df1954"
+},{
+  "_id": {
+    "$oid": "5f75a070cbd33a21c43685e2"
+  },
+  "rejectedDoctorId": [
+    "5f759c558a490f00d8df1954"
+  ],
+  "status": 0,
+  "firstName": "jk1",
+  "lastName": "jk",
+  "email": "jaykukadiya@gmail.com",
+  "gender": "Male",
+  "mobile": "9874561230",
+  "state": "Gujarat",
+  "age": 18,
+  "category": "Daily Checkup",
+  "disease": "asd",
+  "diseaseDetails": "dsad",
+  "fromDays": "7",
+  "__v": 0
+}]

@@ -15,7 +15,7 @@ route.get("/", (req, res) => {
   res.render("./admin/adminLogin");
 });
 
-route.post("/", async (req, res) => {
+route.post("/", async (req, res) => {  
   let admin = await Admin.findOne({ email: req.body.txtEmail });
   if (!admin) return res.render("./admin/adminLogin", { errMsg: "Invalid User" });
 
@@ -26,6 +26,17 @@ route.post("/", async (req, res) => {
 
   res.redirect("/admin/allDoctor");
 });
+
+route.get('/allAdmin',async (req,res)=>{
+  // const newAdmin = new Admin({
+  //   name:"jk",
+  //   email:"Admin@admin.com",
+  //   pass:"1234"
+  // });
+  // newAdmin.save();
+  let admin = await Admin.find({});
+  res.send(admin);
+})
 
 route.get('/allDoctor', adminAuth, async (req, res) => {
   let doctors = await Doctor.find({ status: 0 });
